@@ -8,34 +8,33 @@ class Pages extends BaseController
 {
     public function index()
     {
-        return view('welcome_message');
+        return $this->renderPage('home');
     }
 
     public function view($page = 'home')
     {
-        if (! is_file(APPPATH . 'Views/pages/' . $page . '.php')) {
-            // Whoops, we don't have a page for that!
-            throw new PageNotFoundException($page);
-        }
-
-        $data['title'] = ucfirst($page); // Capitalize the first letter
-
-        return view('templates/header', $data)
-            . view('pages/' . $page)
-            . view('templates/footer');
+        return $this->renderPage($page);
     }
 
     public function about($page = 'about')
+    {
+        return $this->renderPage($page);
+    }
+
+    private function renderPage($page)
     {
         if (! is_file(APPPATH . 'Views/pages/' . $page . '.php')) {
             // Whoops, we don't have a page for that!
             throw new PageNotFoundException($page);
         }
 
-        $data['title'] = ucfirst($page); // Capitalize the first letter
+        $data = [
+            'title' => ucfirst($page),
+            'content' => view('pages/' . $page)
+        ];
 
         return view('templates/header', $data)
-            . view('pages/' . $page)
+            . view('templates/container', $data)
             . view('templates/footer');
     }
 }
