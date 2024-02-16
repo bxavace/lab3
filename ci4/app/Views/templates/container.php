@@ -1,8 +1,3 @@
-<div class="content">
+<div class="content animate__animated animate__fadeInLeft">
     <?= $content ?>
-    <div class="bg">
-        <?php
-            echo img('images/retropixelheader.jpg');
-        ?>
-    </div>
 </div>
