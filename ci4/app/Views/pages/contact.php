@@ -1,33 +1,26 @@
 <h1>Contact Form</h1>
 
 <div class="form-group">
-    <div class="nes-field">
-    <label for="name_field">Your name</label>
-    <input type="text" id="name_field" class="nes-input">
-    </div>
-
-    <div class="nes-field">
-    <label for="name_field">Your email</label>
-    <input type="text" id="name_field" class="nes-input">
-    </div>
-
-    <label for="textarea_field">Your message</label>
-    <textarea id="textarea_field" class="nes-textarea"></textarea>
-
-    <section>
-        <button type="submit" class="nes-btn is-primary" onclick="document.getElementById('dialog-default').showModal();">
+    <form method="POST" action="<?= site_url('contact/processForm'); ?>">
+        <div class="nes-field">
+            <label for="name_field">Your name <span class="error">*</span></label>
+            <input type="text" id="name_field" name="name" class="nes-input" value="">
+        </div>
+        
+        <div class="nes-field">
+            <label for="email_field">Your email <span class="error">*</span></label>
+            <input type="text" id="email_field" name="email" class="nes-input" value="">
+        </div>
+    
+        <div class="nes-field">
+            <label for="textarea_field">Your message <span class="error">*</span></label>
+            <textarea id="textarea_field" name="message" class="nes-textarea"></textarea>
+        </div>
+        <br>
+        <button type="submit" class="nes-btn is-primary">
             Submit
         </button>
-        <dialog class="nes-dialog" id="dialog-default">
-            <form method="dialog">
-            <p class="title nes-text is-success">Message sent.</p>
-            <p>I'll get back to you soon!</p>
-            <menu class="dialog-menu">
-                <button class="nes-btn is-success">Confirm</button>
-            </menu>
-            </form>
-        </dialog>
-    </section>
+    </form>
 
     <div class="other-contact">
         <p>Or you can reach me at:</p>
