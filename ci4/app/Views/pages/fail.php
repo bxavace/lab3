@@ -8,3 +8,5 @@ See error messages:
     <li><span class="nes-text is-error"><?= $emailErr; ?></span></li>
     <li><span class="nes-text is-error"><?= $messageErr; ?></span></li>
 </ul>
+
+<a href="<?= base_url('contact'); ?>" class="nes-btn is-error">Go back</a>
