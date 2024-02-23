@@ -1,5 +1,4 @@
 <h1>My Projects</h1>
 
-<p>Still thinking...</p>
-
-<progress class="nes-progress is-warning" value="30" max="100"></progress>
+<a href="<?= base_url('news') ?>">News</a>
+<p>See news articles, or <a href="./news/new">create one!</a></p>
