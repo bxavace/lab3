@@ -1,14 +1,12 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\GuestModel;
 
-use CodeIgniter\Controller;
-
-class ContactController extends Controller
+class ContactController extends BaseController
 {
     public function index()
     {
-        // Load your contact form view
         return view('contact_form');
     }
 
@@ -57,11 +55,22 @@ class ContactController extends Controller
             return view('templates/header', $data)
             . view('pages/fail', $data)
             . view('templates/footer');
+        } else {
+            $model = model(GuestModel::class);
+
+            $model->save([
+                'name' => $data['name'],
+                'email'  => $data['email'],
+                'message'  => $data['message'],
+            ]);
+    
+            return view('templates/header', $data)
+            . view('pages/success', $data)
+            . view('templates/footer');
         }
        
-        return view('templates/header', $data)
-        . view('pages/success', $data)
-        . view('templates/footer');
+        // return view('templates/header', $data) . view('pages/success', $data)
+        // . view('templates/footer');
     }
 
     

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\GuestModel;
 
 use CodeIgniter\Exceptions\PageNotFoundException;
 
@@ -19,6 +20,20 @@ class Pages extends BaseController
     public function about($page = 'about')
     {
         return $this->renderPage($page);
+    }
+
+    public function contact($page = 'contact')
+    {
+        $model = model(GuestModel::class);
+
+        $data = [
+            'guests'  => $model->getGuests(),
+            'title' => 'Messages from Guests',
+        ];
+
+        return view('templates/header', $data)
+        . view('pages/contact', $data)
+        . view('templates/footer');
     }
 
     private function renderPage($page)
